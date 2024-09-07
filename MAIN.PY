@@ -21,7 +21,7 @@ class OTPService:
 
     def send_otp_via_email(self, email_address):
         if email_address != "rajdeeprao@amityonline.com":
-            messagebox.showerror("invalid email", "please enter the correct email address.")
+            messagebox.showerror("INVALID EMAIL", "PLEASE ENTER THE CORRECT EMAIL ADDRESS.".upper())
             return  # Stop execution if email is incorrect
 
         smtp_server = "smtp.gmail.com"
@@ -29,8 +29,8 @@ class OTPService:
         smtp_username = "rajdeepraoextras@gmail.com"
         smtp_password = "suuk olda bvpp xnub"
 
-        msg = MIMEText(f"your otp is: {self.otp}")
-        msg["Subject"] = "otp to unlock"
+        msg = MIMEText(f"YOUR OTP IS: {self.otp}")
+        msg["Subject"] = "OTP TO UNLOCK".upper()
         msg["From"] = smtp_username
         msg["To"] = email_address
 
@@ -40,14 +40,14 @@ class OTPService:
                 server.login(smtp_username, smtp_password)
                 server.sendmail(smtp_username, email_address, msg.as_string())
             logging.info(f"OTP SENT TO {email_address} SUCCESSFULLY")
-            messagebox.showinfo("Success", "OTP has been sent successfully!")
+            messagebox.showinfo("SUCCESS", "OTP HAS BEEN SENT SUCCESSFULLY!".upper())
         except Exception as e:
             logging.error(f"FAILED TO SEND OTP MAIL: {e}")
-            messagebox.showerror("error", f"failed to send otp: {e}")
+            messagebox.showerror("ERROR", f"FAILED TO SEND OTP: {e}".upper())
 
     def create_gui(self):
         self.root = tk.Tk()
-        self.root.title("otp verification to unlock system")
+        self.root.title("OTP VERIFICATION TO UNLOCK SYSTEM".upper())
 
         # Make the window full-screen
         self.root.attributes("-fullscreen", True)
@@ -64,20 +64,20 @@ class OTPService:
         main_frame.pack(expand=True)
 
         # Header
-        header_label = tk.Label(main_frame, text="welcome back", font=("Consolas", 36, "bold"), fg="#00ff00", bg="#1e1e1e")
+        header_label = tk.Label(main_frame, text="WELCOME BACK".upper(), font=("Consolas", 36, "bold"), fg="#00ff00", bg="#1e1e1e")
         header_label.pack(pady=20)
 
-        email_label = tk.Label(main_frame, text="enter your mail to receive an otp:", font=("Consolas", 20), fg="#00ff00", bg="#1e1e1e")
+        email_label = tk.Label(main_frame, text="ENTER YOUR MAIL TO RECEIVE AN OTP:".upper(), font=("Consolas", 20), fg="#00ff00", bg="#1e1e1e")
         email_label.pack(pady=10)
 
         # Email Entry
         self.email_entry = tk.Entry(main_frame, width=30, font=("Consolas", 18), fg="white", bg="#333333", bd=0, relief="flat")
         self.email_entry.pack(pady=10, ipady=10)
 
-        send_otp_button = tk.Button(main_frame, text="send otp", command=self.send_otp, font=("Consolas", 18), bg="#007700", fg="white", bd=0, relief="flat")
+        send_otp_button = tk.Button(main_frame, text="SEND OTP".upper(), command=self.send_otp, font=("Consolas", 18), bg="#007700", fg="white", bd=0, relief="flat")
         send_otp_button.pack(pady=20)
 
-        otp_label = tk.Label(main_frame, text="enter otp:", font=("Consolas", 20), fg="#00ff00", bg="#1e1e1e")
+        otp_label = tk.Label(main_frame, text="ENTER OTP:".upper(), font=("Consolas", 20), fg="#00ff00", bg="#1e1e1e")
         otp_label.pack(pady=10)
 
         # OTP Entry (6 boxes for 6 digits)
@@ -90,11 +90,11 @@ class OTPService:
             otp_entry.bind("<KeyRelease>", self.move_focus)  # Add event to move focus
             self.otp_entries.append(otp_entry)
 
-        verify_button = tk.Button(main_frame, text="verify otp", command=self.verify_otp, font=("Consolas", 18), bg="#007700", fg="white", bd=0, relief="flat")
+        verify_button = tk.Button(main_frame, text="VERIFY OTP".upper(), command=self.verify_otp, font=("Consolas", 18), bg="#007700", fg="white", bd=0, relief="flat")
         verify_button.pack(pady=20)
 
         # Footer
-        footer_label = tk.Label(main_frame, text="made with ❤️ by rajdeep rao", font=("Consolas", 14), fg="#00ff00", bg="#1e1e1e")
+        footer_label = tk.Label(main_frame, text="MADE WITH ❤️ BY RAJDEEP RAO".upper(), font=("Consolas", 14), fg="#00ff00", bg="#1e1e1e")
         footer_label.pack(pady=40)
 
         # Start main loop
@@ -103,7 +103,7 @@ class OTPService:
     def disable_close(self):
         """Prevent window from closing unless verification is complete."""
         if not self.verification_complete:
-            messagebox.showwarning("warning", "you cannot close the window until otp verification is complete.")
+            messagebox.showwarning("WARNING", "YOU CANNOT CLOSE THE WINDOW UNTIL OTP VERIFICATION IS COMPLETE.".upper())
 
     def send_otp(self):
         email_address = self.email_entry.get()
@@ -117,7 +117,7 @@ class OTPService:
             self.root.destroy()  # Allow window to close now
         else:
             logging.error("OTP VERIFICATION FAILED")
-            messagebox.showerror("error", "incorrect otp. please try again.")
+            messagebox.showerror("ERROR", "INCORRECT OTP. PLEASE TRY AGAIN.".upper())
 
     def move_focus(self, event):
         """Move focus to the next entry box when a digit is entered."""
