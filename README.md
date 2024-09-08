@@ -1,35 +1,45 @@
-# OTP Verification System using Python and Tkinter
+# Windows OTP Unlocker
 
-This project implements an OTP (One Time Password) verification system using Python, Tkinter for GUI, and SMTP for email communication. The purpose of this application is to securely verify a user's identity through an OTP sent via email. The system features a full-screen GUI, user input validation, and OTP generation and verification.
+## Project Overview
+
+The **Windows OTP Unlocker** is a security application that verifies a user's identity by sending a One-Time Password (OTP) to a pre-configured email address (`rajdeephighondata@gmail.com`). This application ensures access is granted only when the correct OTP is entered. The system features enhanced security by strictly validating email input and rejecting any unauthorized email addresses. This project can serve as an example for basic authentication systems used in applications requiring secure login mechanisms.
+
+---
 
 ## Features
 
-- **OTP Generation**: Generates a random 6-digit OTP using Python's `secrets` module for secure OTP creation.
-- **Email Validation**: The user is required to enter a specific email (customizable) to receive the OTP. Incorrect emails trigger an error message.
-- **Send OTP via Email**: The system sends the generated OTP to the specified email using SMTP.
-- **OTP Verification**: The user enters the OTP in a custom interface with 6 individual boxes, and the system verifies it.
-- **Full-screen GUI**: The application runs in full-screen mode to prevent unauthorized closure.
-- **Error Handling**: Comprehensive error handling is provided for email sending and OTP verification failures.
-- **Disable Close**: The window cannot be closed until the OTP verification is successfully completed.
+### 1. **OTP Verification System**:
+   - The system generates a random six-digit OTP and sends it to the registered email address (`rajdeephighondata@gmail.com`).
+   - Once the user enters the correct OTP in the application, access is granted.
+   - If an incorrect OTP is entered, an error message is displayed, allowing the user to retry.
+   - The OTP remains valid for a limited time (modifiable based on your needs).
 
-## Technologies Used
+### 2. **Email Validation**:
+   - The application ensures that only the pre-configured email (`rajdeephighondata@gmail.com`) is valid for receiving the OTP.
+   - If the user enters any email other than the registered one, an "Invalid Email" error is triggered, and the OTP is not sent.
 
-- **Python 3.x**: The core programming language for the entire project.
-- **Tkinter**: Used for the graphical user interface (GUI).
-- **SMTP (Simple Mail Transfer Protocol)**: Used to send the OTP to the user's email address.
-- **Secrets Module**: For secure and random OTP generation.
-- **Logging**: Python's `logging` module is used to capture success or failure of various actions like OTP generation and email sending.
+### 3. **Simple GUI Interface**:
+   - A user-friendly interface built using `tkinter` allows easy input of the email address and OTP.
+   - Minimalist design that ensures ease of use while maintaining security.
+
+### 4. **Enhanced Security Mechanism**:
+   - By enforcing a fixed email address, the application minimizes the risk of unauthorized access.
+   - The OTP is securely generated and delivered through the email system using SMTP.
+
+---
 
 ## Prerequisites
 
-- **Python 3.x**: Make sure you have Python 3 installed on your system.
-- **Tkinter**: Comes pre-installed with Python, but if missing, you can install it via your package manager.
-- **SMTP Gmail Access**: To send emails, you will need a valid Gmail account and enable "Less Secure App Access" for your account or use an App Password if you have 2FA enabled.
-  
-### Install Required Packages
+To run this project, the following prerequisites must be met:
 
-Use `pip` to install necessary dependencies.
+1. **Python Version**:
+   - The application requires Python 3.7 or higher.
 
-```bash
-pip install smtplib
-pip install email
+2. **Required Python Libraries**:
+   - `Pillow` – for image handling (used in GUI if needed for visual enhancements).
+   - `tkinter` – to create the graphical user interface.
+   - `smtplib` – to send emails containing the OTP.
+   
+   Install these libraries using `pip`:
+   ```bash
+   pip install Pillow
